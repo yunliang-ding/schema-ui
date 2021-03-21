@@ -1,2 +1,2 @@
-# react-base
-最基础react快速搭建
+# react-schema-ui
+分析数据模型 -> 快速搭建表单的CRUD
