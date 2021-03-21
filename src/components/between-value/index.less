@@ -1,0 +1,27 @@
+.schema-input-group-wrapper {
+  display: flex;
+  .ant-input-group{
+    display: inline-flex;
+  }
+  .ant-input-number:first-child {
+    border-right-width: 0;
+    &:focus,
+    &:hover {
+      border-right-width: 1px;
+    }
+  }
+  .ant-input-number:last-child {
+    border-left-width: 0;
+    &:focus,
+    &:hover {
+      border-left-width: 1px;
+    }
+  }
+  .schema-input-split {
+    background-color: #fff;
+    width: 35px;
+    border-left: 0;
+    border-right: 0;
+    pointer-events: none;
+  }
+}
