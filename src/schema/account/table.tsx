@@ -1,5 +1,7 @@
 import { getList, deleteById } from "@/service/acount";
 import { tableScrollHeight } from "@/util";
+import React from 'react'
+import { Tag } from "antd";
 export default {
   request: (params: any) => {
     return getList(params);
@@ -41,6 +43,9 @@ export default {
       title: "性别",
       dataIndex: "sex",
       width: 120,
+      render: (sex: number) => {
+        return sex === 1 ? "男" : "女";
+      },
     },
     {
       title: "年龄",
@@ -67,16 +72,31 @@ export default {
       dataIndex: "liked",
       width: 120,
       ellipsis: true,
+      render: (liked: string) => {
+        return [
+          { label: "听歌", value: 1 },
+          { label: "电影", value: 2 },
+          { label: "学习", value: 3 },
+          { label: "游戏", value: 4 },
+        ]
+          .filter((item: any) => liked.split(",").includes(String(item.value)))
+          .map((item) => item.label)
+          .join(",");
+      },
     },
     {
       title: "级别",
       dataIndex: "className",
       width: 120,
+      render: (className: number) => {
+        let map: any = { 1: "一年级", 2: "二年级", 3: "三年级", 4: "四年级" };
+        return <Tag color="success">{map[className]}</Tag>;
+      },
     },
     {
       title: "地址",
       dataIndex: "address",
-      width: 200,
+      width: 150,
       ellipsis: true,
     },
   ],
@@ -91,10 +111,10 @@ export default {
         label: "删除",
         value: "delete",
         icon: "icon-shanchu",
-        type: 'confirm',
-        onClick: (record:any) => {
-          return deleteById(record)
-        }
+        type: "confirm",
+        onClick: (record: any) => {
+          return deleteById(record);
+        },
       },
     ];
   },

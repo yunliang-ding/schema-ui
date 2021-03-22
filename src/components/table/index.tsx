@@ -78,10 +78,11 @@ export default (props: any) => {
   }, [refresh]);
   /**heightChange */
   const sizeChange = () => {
-    let height = tableScrollHeight;
+    let height = tableScrollHeight + 58 + 100;
     if ($(`#${searchId}`)) {
       height += $(`#${searchId}`).getBoundingClientRect().height;
     }
+    console.log('height', height);
     setheight($(`body`).getBoundingClientRect().height - height);
   };
   useEffect(() => {
