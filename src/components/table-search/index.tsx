@@ -8,23 +8,20 @@ export default ({
   columns = [],
   tools = [],
   toolsClick = () => {},
-  reload = false,
+  refresh = false,
+  setRefresh = () => {},
   searchRef = {},
   tableScrollHeight,
   ...restProps
 }: any) => {
-  /**update */
-  useEffect(() => {
-    setrefresh(!refresh);
-  }, [reload]);
-  const [refresh, setrefresh] = useState(false);
+  const [loading, setloading] = useState(false);
   const [heightChange, setheightChange] = useState(false);
   const [payload, setpayload]: any = useState(initialSearchValue);
   /**search */
   const onSearch = (payload: any) => {
     setloading(true);
     setpayload({ ...initialSearchValue, ...payload });
-    setrefresh(!refresh);
+    setRefresh(!refresh);
   };
   // 生成唯一的ID
   const [thisId] = useState(
@@ -38,7 +35,6 @@ export default ({
       },
     };
   }, [payload]);
-  const [loading, setloading] = useState(false);
   const queryOver = () => {
     setTimeout(() => {
       setloading(false);

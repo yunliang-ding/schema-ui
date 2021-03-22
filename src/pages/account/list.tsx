@@ -11,6 +11,7 @@ export default (props: any) => {
   const rowOperationsClick = (e: any, record: any) => {
     if (e.value === "edit") {
       setentity(record);
+      record.liked = record.liked.split(',').map((item:any) => Number(item)) // 格式转换
       open("form");
     } else if(e.value === "delete"){
       console.log('删除');
@@ -24,7 +25,8 @@ export default (props: any) => {
   return (
     <TableSearch
       rowKey="id"
-      reload={refresh}
+      refresh={refresh}
+      setRefresh={setRefresh}
       fields={schemas.search.fields}
       request={schemas.table.request}
       columns={schemas.table.columns}
