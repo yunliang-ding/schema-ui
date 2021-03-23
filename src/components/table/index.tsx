@@ -82,7 +82,6 @@ export default (props: any) => {
     if ($(`#${searchId}`)) {
       height += $(`#${searchId}`).getBoundingClientRect().height;
     }
-    console.log('height', height);
     setheight($(`body`).getBoundingClientRect().height - height);
   };
   useEffect(() => {
