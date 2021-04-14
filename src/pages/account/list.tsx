@@ -10,8 +10,8 @@ export default (props: any) => {
   };
   const rowOperationsClick = (e: any, record: any) => {
     if (e.value === "edit") {
-      setentity(record);
       record.liked = record.liked.split(',').map((item:any) => Number(item)) // 格式转换
+      setentity(record);
       open("form");
     } else if(e.value === "delete"){
       console.log('删除');

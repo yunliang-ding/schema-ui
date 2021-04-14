@@ -25,7 +25,7 @@ export default ({ rowOperations, rowOperationsClick = () => {} }: any) => {
                 disabled={menu.disabled}
                 title={menu.title || '是否确定删除?'}
                 onConfirm={() => {
-                  rowOperationsClick(menu, record);
+                  rowOperationsClick(menu, {...record});
                 }}
                 okText="确定"
                 cancelText="取消"
@@ -40,7 +40,7 @@ export default ({ rowOperations, rowOperationsClick = () => {} }: any) => {
                 disabled={menu.disabled}
                 type="link"
                 onClick={() => {
-                  rowOperationsClick(menu, record);
+                  rowOperationsClick(menu, {...record});
                 }}
               >
                 <IconFont style={{ marginRight: 6 }} type={menu.icon} />
